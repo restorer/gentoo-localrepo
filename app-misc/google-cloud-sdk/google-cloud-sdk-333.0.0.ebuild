@@ -6,6 +6,8 @@ inherit desktop pax-utils multilib-build unpacker
 
 DESCRIPTION="Google Cloud SDK"
 HOMEPAGE="https://cloud.google.com/sdk"
+
+# https://cloud.google.com/sdk/docs/install
 SRC_URI="https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/${PN}-${PV}-linux-x86_64.tar.gz"
 
 LICENSE="Apache-2.0"
