@@ -32,6 +32,8 @@ src_prepare() {
 
 	# Enable configuration in user home directory
 	rm doublecmd/doublecmd.inf || die
+
+	sed -i -e 's@./doublecmd@exec ./doublecmd@' doublecmd/doublecmd.sh
 }
 
 src_install() {
