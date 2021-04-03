@@ -44,6 +44,7 @@ RDEPEND="
 	x11-libs/libXxf86vm
 	x11-libs/pango"
 
+S="${WORKDIR}/clion-${PV}"
 QA_PREBUILT="opt/${P}/*"
 
 src_prepare() {
@@ -91,9 +92,9 @@ src_install() {
 		fperms 755 "${dir}"/jbr/lib/{chrome-sandbox,jcef_helper,jexec,jspawnhelper}
 	fi
 
-	make_wrapper "${PN}" "${dir}/bin/${PN}.sh"
-	newicon "bin/${PN}.svg" "${PN}.svg"
-	make_desktop_entry "${PN}" "clion-bundled" "${PN}" "Development;IDE;"
+	make_wrapper "${PN}" "${dir}/bin/clion.sh"
+	newicon "bin/clion.svg" "${PN}.svg"
+	make_desktop_entry "${PN}" "CLion (bundled)" "${PN}.svg" "Development;IDE;"
 
 	# recommended by: https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
 	dodir /usr/lib/sysctl.d/
