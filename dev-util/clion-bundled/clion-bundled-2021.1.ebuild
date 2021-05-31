@@ -78,7 +78,7 @@ src_install() {
 	fperms 755 "${dir}"/bin/clang/linux/{clang{d,-tidy},clazy-standalone}
 	fperms 755 "${dir}"/bin/cmake/linux/bin/c{cmake,make,pack,test}
 	fperms 755 "${dir}"/bin/gdb/linux/bin/g{core,db,db-add-index,dbserver}
-	fperms 755 "${dir}"/bin/lldb/linux/bin/{ll{db,db-argdumper,db-server},LLDBFrontend}}
+	fperms 755 "${dir}"/bin/lldb/linux/bin/{ll{db,db-argdumper,db-server},LLDBFrontend}
 
 	if use amd64; then
 		fperms 755 "${dir}"/bin/fsnotifier64

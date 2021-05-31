@@ -70,6 +70,7 @@ src_prepare () {
 	eapply "${_P}/disable-jit-nonsse2.patch"
 	eapply "${_P}/fix-ftbfs-m68k.patch"
 	eapply "${_P}/fix-ftbfs-gcc6.patch"
+	eapply "${FILESDIR}/glib-2.68.0.patch"
 
 	_AM="$(ls /usr/bin | grep '^aclocal\-' | head -n 1 | sed 's@^aclocal-@@')" || die
 	[ "${_AM}" = "" ] && die "aclocal is not found"
@@ -89,6 +90,9 @@ src_prepare () {
 	sed -i 's/OpaqueJSString::create(chars, numChars)/OpaqueJSString::create((const UChar*)chars, numChars)/' Source/JavaScriptCore/API/JSStringRef.cpp || die
 	sed -i 's/createWithoutCopying(chars, numChars)/createWithoutCopying((const UChar*)chars, numChars)/' Source/JavaScriptCore/API/JSStringRef.cpp || die
 	sed -i 's/string->characters()/(const JSChar*)(string->characters())/' Source/JavaScriptCore/API/JSStringRef.cpp || die
+
+	sed -i 's/static volatile gsize typeVolatile = 0;/static gsize typeVolatile = 0;/' Source/WebCore/accessibility/atk/WebKitAccessibleWrapperAtk.cpp || die
+	sed -i 's/static volatile gsize typeVolatile = 0;/static gsize typeVolatile = 0;/' Source/WebCore/accessibility/atk/WebKitAccessibleHyperlink.cpp || die
 }
 
 src_configure () {
