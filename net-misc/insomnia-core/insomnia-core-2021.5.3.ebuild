@@ -6,7 +6,7 @@ inherit desktop pax-utils multilib-build unpacker
 
 DESCRIPTION="The Desktop API client for REST, GraphQL and gRPC. Make requests, inspect responses."
 HOMEPAGE="https://insomnia.rest/"
-SRC_URI="https://dl.bintray.com/getinsomnia/Insomnia/Insomnia.Core-${PV}.deb"
+SRC_URI="https://github.com/Kong/insomnia/releases/download/core%40${PV}/Insomnia.Core-${PV}.deb"
 
 LICENSE="MIT"
 SLOT="0"
@@ -31,4 +31,12 @@ src_install() {
 
 	domenu usr/share/applications/insomnia.desktop
 	dodoc changelog
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
